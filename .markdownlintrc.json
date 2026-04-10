@@ -1,0 +1,9 @@
+{
+  "default": true,
+  "no-hard-tabs": false,
+  "line-length": false,
+  "no-trailing-spaces": true,
+  "blank-lines-around-headings": true,
+  "blank-lines-around-fences": true,
+  "fenced-code-language": true
+}
