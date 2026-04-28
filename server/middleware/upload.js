@@ -2,9 +2,13 @@ const multer = require('multer');
 const path = require('path');
 const crypto = require('crypto');
 
+const os = require('os');
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, '..', 'uploads'));
+    // Use /tmp directory if running on Vercel, otherwise use local uploads folder
+    const uploadPath = process.env.VERCEL ? os.tmpdir() : path.join(__dirname, '..', 'uploads');
+    cb(null, uploadPath);
   },
   filename: (req, file, cb) => {
     const uniqueSuffix = crypto.randomBytes(16).toString('hex');
